@@ -8,8 +8,8 @@
 > - Department of Computer Science and Information Engineering, National Quemoy University (國立金門大學 資訊工程學系)
 
 - 📫 How to reach me...
-> - E-mail:s919075@stu.chsc.tw / s111210520@student.nqu.edu.tw<br>
-> - GitHub:https://github.com/taitaiwu/taitaiwu
-> - [Pensonal Website](https://taitaiwu.github.io/wp/Homework8/layout.html)
+> - E-mail : s919075@stu.chsc.tw / s111210520@student.nqu.edu.tw<br>
+> - GitHub : https://github.com/taitaiwu/taitaiwu
+> - Website: [LINK](https://taitaiwu.github.io/wp/Homework8/layout.html)
 
 
