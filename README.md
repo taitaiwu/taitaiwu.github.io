@@ -1,6 +1,7 @@
 - 👋 Hi, I’m Jiatai.
 - 👀 I’m interested in codeing, reading, and watching drama.
 - 🌱 I’m currently learning C, C#, Python, Html, CSS, and Javascript.
+- 😍 I like "Tom and Jerry", and  "Teens in Times".
 - 🏫 My education...
 > - Changhua County Da Tong Elementary School (彰化縣立大同國民小學)
 > - Changhua County Shengang Junior High School (彰化縣立伸港國民中學)
