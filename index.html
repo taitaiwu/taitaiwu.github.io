@@ -186,12 +186,14 @@
         {
             top: 340px;
             left: 10px;
+            transition: top 0.3s ease; 
         }
 
         .display2
         {
             top: 420px;
             left: 100px;
+            transition: top 0.3s ease; 
         }
 
         .content-card
@@ -528,8 +530,27 @@
                     }
                 }
             });
+        });});
+    
+
+            document.addEventListener('DOMContentLoaded', function () {
+            const navbarCollapse = document.querySelector('#navbarNav');
+            const display1 = document.querySelector('.display1');
+            const display2 = document.querySelector('.display2');
+            const originalTop1 = parseInt(window.getComputedStyle(display1).top);
+            const originalTop2 = parseInt(window.getComputedStyle(display2).top);
+            const offset = 150; // 設定偏移量 (你可以調整這個值)
+
+            navbarCollapse.addEventListener('show.bs.collapse', function () {
+                display1.style.top = (originalTop1 + offset) + 'px';
+                display2.style.top = (originalTop2 + offset) + 'px';
+            });
+
+            navbarCollapse.addEventListener('hide.bs.collapse', function () {
+                display1.style.top = originalTop1 + 'px';
+                display2.style.top = originalTop2 + 'px';
+            });
         });
-    });
     </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
