@@ -8,6 +8,7 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=LXGW+WenKai+TC&display=swap');
 
+        /* 載入畫面 */
         .loading-screen 
         {
             position: fixed;
@@ -15,7 +16,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: white; /* 可改為其他背景色 */
+            background-color: rgb(243, 255, 247); 
             display: flex;
             justify-content: center;
             align-items: center;
@@ -96,11 +97,6 @@
 
         @media (max-width: 768px) 
         {
-            .nav-tabs 
-            {
-                font-size: 12px;
-            }
-
             .tab-content
             {
                 height: 160vh;
@@ -127,7 +123,7 @@
             font-size: 70px !important;
         }
 
-        nav 
+        .nav 
         {
             position: sticky;
             top: 0;
@@ -343,9 +339,10 @@
         </div>
     </header>
 
-    <nav class="bg-secondary">
+    <!-- 大螢幕: 使用 nav-tabs 書籤選單 -->
+    <div style="background-color: gray;">
         <div class="container">
-            <ul class="nav nav-tabs">
+            <ul class="nav nav-tabs d-none d-md-flex">
                 <li class="nav-item">
                     <a class="nav-link active" id="home-tab" data-bs-toggle="tab" href="#home">我的首頁</a>
                 </li>
@@ -357,7 +354,33 @@
                 </li>
             </ul>
         </div>
+    </div>
+
+    <!-- 小螢幕: 使用 Navbar (漢堡選單) -->
+    <nav class="navbar navbar-expand-md navbar-dark bg-secondary d-md-none">
+        <div class="container">
+            <!-- 漢堡選單按鈕 -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <!-- 漢堡選單內容 -->
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link active" id="home-tab" data-bs-toggle="tab" href="#home">我的首頁</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="profile-tab" data-bs-toggle="tab" href="#profile">我的作品</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="contact-tab" data-bs-toggle="tab" href="#contact">聯絡方式</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
     </nav>
+
 
     <div class="tab-content container my-5">
         <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
@@ -381,7 +404,7 @@
             <div class="row gy-4" style="height: 40vh;">
                 <div class="display display1">
                     <div>
-                        <img src="112-2網頁設計.png" alt="112-2網頁設計">
+                        <img src="112-2網頁設計.png" alt="112-2網頁設計" loading="lazy">
                         <h1>112-2 網頁設計</h1>
                         <p>
                             課堂作品，包含期中專案和每一次平時作業。課程內容主要為網頁前端設計(Html, CSS, Javascript)<br><br>
@@ -391,7 +414,7 @@
                     </div>
 
                     <div>
-                        <img src="113-1網站設計進階.png" alt="自我介紹">
+                        <img src="113-1網站設計進階.png" alt="自我介紹" loading="lazy">
                         <h1>113-1 網站設計進階</h1>
                         <p>
                             課堂作品，包含期中專案和每一次平時作業。課程內容主要為網站後端技術(Deno, FastAPI)<br><br>
@@ -432,7 +455,7 @@
                     <img src="gmail.png" alt="Gmail">
                     <h1>Gmail</h1>
                     <p><strong>school</strong><br>s1254059@gm.ncue.edu.tw</p>
-                    <a href="mailto:s1254059@gm.ncue.edu.tw" target="_blank"></a></a>
+                    <a href="mailto:s1254059@gm.ncue.edu.tw" target="_blank"></a>
                 </div>
 
                 <div class="content-card">
@@ -468,6 +491,10 @@
                 document.querySelector('.loading-screen').classList.add('hidden');
                 document.body.style.overflow = 'auto'; // 允許滾動
             }, 1000); // 1 秒後隱藏動畫
+
+            window.addEventListener("load", function () {
+                document.querySelector(".loading-screen").classList.add("hidden");
+            });
         };
     </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
