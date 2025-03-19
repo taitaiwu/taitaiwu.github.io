@@ -319,6 +319,50 @@
             z-index: 3;
         }
 
+        .chat-box {
+            height: 400px;
+            overflow-y: auto;
+            padding: 10px;
+            border: 2px solid #ccc; /* 增加外框 */
+            border-radius: 5px;
+            background: #f8f9fa;
+            display: flex;
+            flex-direction: column;
+        }
+        .message-container {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 10px;
+        }
+        .message {
+            padding: 10px;
+            border-radius: 10px;
+            max-width: 80%;
+            word-wrap: break-word;
+        }
+        .user-message {
+            background-color: #0d6efd;
+            color: white;
+            align-self: flex-end;
+        }
+        .bot-message {
+            background-color: #e9ecef;
+            color: black;
+            align-self: flex-start;
+        }
+        .user-label {
+            align-self: flex-end;
+            font-size: 0.9em;
+            color: #555;
+            margin-bottom: 2px;
+        }
+        .bot-label {
+            align-self: flex-start;
+            font-size: 0.9em;
+            color: #555;
+            margin-bottom: 2px;
+        }
+
         footer 
         {
             min-height: 10vh;
@@ -352,6 +396,9 @@
                     <a class="nav-link" id="profile-tab" data-bs-toggle="tab" href="#profile">我的作品</a>
                 </li>
                 <li class="nav-item">
+                    <a class="nav-link" id="ai-tab" data-bs-toggle="tab" href="#ai">大語言模型</a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link" id="contact-tab" data-bs-toggle="tab" href="#contact">聯絡方式</a>
                 </li>
             </ul>
@@ -375,6 +422,9 @@
                     <li class="nav-item">
                         <a class="nav-link" id="profile-tab" data-bs-toggle="tab" href="#profile">我的作品</a>
                     </li>
+                    <li>
+                        <a class="nav-link" id="ai-tab" data-bs-target="tab" href="#ai">聊天機器人</a>
+                    </li>
                     <li class="nav-item">
                         <a class="nav-link" id="contact-tab" data-bs-toggle="tab" href="#contact">聯絡方式</a>
                     </li>
@@ -387,7 +437,7 @@
     <div class="tab-content container my-5">
         <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
             <h2>自我介紹</h2>
-            <p>你好，我是吳佳泰，來自彰化縣，目前就讀國立彰化師範大學資訊工程學系。我是一個熱愛學習和探索的人，會去嘗試不同的新事物，興趣是閱讀和追劇，還有寫程式(偏好應用程式設計或網站設計)，喜歡一些可愛動物(喜歡狗比喜歡貓多一點)，喜歡吃拉麵、火鍋和咖哩飯，喜歡喝迷客夏的珍珠紅茶拿鐵，有一個小小的夢想是環遊世界，希望之後可以存很多錢，去很多很多地方，去看看北歐的極光、北海道的雪、重慶的山城，還有其他更多的地方。</p>
+            <p>你好，我是吳佳泰，來自彰化縣，目前就讀國立彰化師範大學資訊工程學系。我是一個熱愛學習和探索的人，會去嘗試不同的新事物，興趣是閱讀和追劇，還有寫程式(偏好應用程式設計或網站設計)，喜歡一些可愛動物(喜歡狗比喜歡貓多一點)，喜歡吃拉麵、火鍋和咖哩飯，喜歡喝迷客夏的珍珠紅茶拿鐵，有一個小小的夢想是環遊世界，希望之後可以存很多錢，去很多很多地方，去看看北歐的極光、北海道的雪、重慶的山城，還有其他更多的地方。很高興認識你，歡迎來與我交流!</p>
             <hr>
             <h2>我的學歷</h2>
             <p>
@@ -406,7 +456,7 @@
             <div class="row gy-4" style="height: 40vh;">
                 <div class="display display1">
                     <div>
-                        <img src="112-2網頁設計.png" alt="112-2網頁設計" loading="lazy">
+                        <img src="picture/112-2網頁設計.png" alt="112-2網頁設計" loading="lazy">
                         <h1>112-2 網頁設計</h1>
                         <p>
                             課堂作品，包含期中專案和每一次平時作業。課程內容主要為網頁前端設計(Html, CSS, Javascript)<br><br>
@@ -416,7 +466,7 @@
                     </div>
 
                     <div>
-                        <img src="113-1網站設計進階.png" alt="自我介紹" loading="lazy">
+                        <img src="picture/113-1網站設計進階.png" alt="113-1 網頁設計進階" loading="lazy">
                         <h1>113-1 網站設計進階</h1>
                         <p>
                             課堂作品，包含期中專案和每一次平時作業。課程內容主要為網站後端技術(Deno, FastAPI)<br><br>
@@ -428,47 +478,68 @@
             </div>
         </div>
 
+        <div class="tab-pane fade" id="ai" role="tabpanel" aria-labelledby="ai-tab">
+            <h2>一個不太聰明的聊天機器人</h2>
+            <p>可接受各種語言，輸出可能會以繁體中文、簡體中文或英文等語言回答</p>
+            <div class="mb-3">
+                <div class="chat-box" id="chatBox"></div>
+                <div class="mt-3">
+                    <textarea id="question" class="form-control" rows="3" placeholder="輸入訊息(按Enter送出;Shift+Enter換行)"></textarea>
+                    <button class="btn btn-primary w-100 mt-2" onclick="chat()">送出問題</button>
+                    <hr>
+                    <figure>
+                        <blockquote class="blockquote">
+                            <p>※ 若Groq不會說話了，可能是額度已用盡。</p>
+                        </blockquote>
+                        <figcaption class="blockquote-footer">
+                            <cite title="Groq's Website Link"><a href="https://chat.groq.com/" target="_blank">Groq</a></cite> Technical Support
+                        </figcaption>
+                      </figure>
+                </div>
+            </div>
+        </div>
+
         <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab" style="height: 60vh;">
             <h2>聯絡方式</h2>
             <p>你可以透過以下方式聯絡我或了解我：</p>
             <div class="display display2">
                 <div class="content-card">
-                    <img src="github.png" alt="GitHub">
+                    <img src="picture/github.png" alt="GitHub">
                     <h1>GitHub</h1>
                     <p><br>taitaiwu</p>
                     <a href="https://github.com/taitaiwu" target="_blank"></a>
                 </div>
 
                 <div class="content-card">
-                    <img src="credly.svg" alt="Credly">
+                    <img src="picture/credly.svg" alt="Credly">
                     <h1>Credly</h1>
                     <p><br>JIA TAI WU</p>
                     <a href="https://www.credly.com/users/jia-tai-wu" target="_blank"></a></a>
                 </div>
 
                 <div class="content-card">
-                    <img src="gmail.png" alt="Gmail">
+                    <img src="picture/gmail.png" alt="Gmail">
                     <h1>Gmail</h1>
                     <p><strong>private</strong><br>jiataiwu84@gmail.com</p>
                     <a href="mailto:jiataiwu84@gmail.com" target="_blank"></a></a>
                 </div>
 
                 <div class="content-card">
-                    <img src="gmail.png" alt="Gmail">
+                    <img src="picture/gmail.png" alt="Gmail">
                     <h1>Gmail</h1>
                     <p><strong>school</strong><br>s1254059@gm.ncue.edu.tw</p>
                     <a href="mailto:s1254059@gm.ncue.edu.tw" target="_blank"></a>
                 </div>
 
                 <div class="content-card">
-                    <img src="outlook.png" alt="Outlook">
+                    <img src="picture/outlook.png" alt="Outlook">
                     <h1>Outlook</h1>
                     <p><strong>school</strong><br>s1254059@mail.ncue.edu.tw</p>
                     <a href="mailto:s1254059@mail.ncue.edu.tw" target="_blank"></a></a>
                 </div>
 
                 <div class="content-card">
-                    <img src="instagram.png" alt="Instagram">
+                    <img src="picture/instagram.png" alt="Instagram">
                     <h1>Instagram</h1>
                     <p><br>jiatai.wu_0123</p>
                     <a href="https://www.instagram.com/jiatai.wu_0123/"></a>
@@ -487,53 +558,63 @@
     </footer>
 
     <script>
+        //登錄等待動畫
         window.onload = function() 
         {
-            setTimeout(() => {
+            setTimeout(() => 
+            {
                 document.querySelector('.loading-screen').classList.add('hidden');
                 document.body.style.overflow = 'auto'; // 允許滾動
             }, 1000); // 1 秒後隱藏動畫
 
-            window.addEventListener("load", function () {
+            window.addEventListener("load", function () 
+            {
                 document.querySelector(".loading-screen").classList.add("hidden");
             });
         };
 
-        document.addEventListener('DOMContentLoaded', function () {
+        //書籤式選單和漢堡選單
+        document.addEventListener('DOMContentLoaded', function () 
+        {
             const navbarNavLinks = document.querySelectorAll('.navbar-nav .nav-link');
 
-            navbarNavLinks.forEach(function (navLink) {
-                navLink.addEventListener('click', function (event) {
-                event.preventDefault(); // 防止預設連結行為
+            navbarNavLinks.forEach(function (navLink) 
+            {
+                navLink.addEventListener('click', function (event) 
+                {
+                    event.preventDefault(); // 防止預設連結行為
 
-                const targetTabId = this.getAttribute('href'); // 取得目標 Tab ID (例如，#home)
-                const targetTab = document.querySelector(`[data-bs-toggle="tab"][href="${targetTabId}"]`); // 尋找 Tab 連結
+                    const targetTabId = this.getAttribute('href'); // 取得目標 Tab ID (例如，#home)
+                    const targetTab = document.querySelector(`[data-bs-toggle="tab"][href="${targetTabId}"]`); // 尋找 Tab 連結
 
-                if (targetTab) {
-                    // 取得 Bootstrap Tab 實例 (如果存在)
-                    const bsTab = bootstrap.Tab.getInstance(targetTab);
+                    if (targetTab) 
+                    {
+                        const bsTab = bootstrap.Tab.getInstance(targetTab);  // 取得 Bootstrap Tab 實例 (如果存在)
 
-                    // 如果 Tab 實例存在，呼叫 show 方法
-                    if (bsTab) {
-                        bsTab.show();
-                    } 
-                    else {
-                    // 如果 Tab 實例不存在，建立新的實例並顯示它
-                        new bootstrap.Tab(targetTab).show();
+                        if (bsTab) // 如果 Tab 實例存在，呼叫 show 方法
+                        {
+                            bsTab.show();
+                        } 
+
+                        else // 如果 Tab 實例不存在，建立新的實例並顯示它
+                        {
+                            new bootstrap.Tab(targetTab).show();
+                        }
+
+                        const navbarCollapse = document.querySelector('#navbarNav');  // 關閉漢堡選單 (可選)
+                        const bsCollapse = bootstrap.Collapse.getInstance(navbarCollapse);
+                        if (bsCollapse) 
+                        {
+                            bsCollapse.hide();
+                        }
                     }
-
-                    // 關閉漢堡選單 (可選)
-                    const navbarCollapse = document.querySelector('#navbarNav');
-                    const bsCollapse = bootstrap.Collapse.getInstance(navbarCollapse);
-                    if (bsCollapse) {
-                        bsCollapse.hide();
-                    }
-                }
+                });
             });
-        });});
-    
+        });
 
-            document.addEventListener('DOMContentLoaded', function () {
+        //響應式網頁設定
+        document.addEventListener('DOMContentLoaded', function () 
+        {
             const navbarCollapse = document.querySelector('#navbarNav');
             const display1 = document.querySelector('.display1');
             const display2 = document.querySelector('.display2');
@@ -541,15 +622,107 @@
             const originalTop2 = parseInt(window.getComputedStyle(display2).top);
             const offset = 150; // 設定偏移量 (你可以調整這個值)
 
-            navbarCollapse.addEventListener('show.bs.collapse', function () {
+            navbarCollapse.addEventListener('show.bs.collapse', function () 
+            {
                 display1.style.top = (originalTop1 + offset) + 'px';
                 display2.style.top = (originalTop2 + offset) + 'px';
             });
 
-            navbarCollapse.addEventListener('hide.bs.collapse', function () {
+            navbarCollapse.addEventListener('hide.bs.collapse', function () 
+            {
                 display1.style.top = originalTop1 + 'px';
                 display2.style.top = originalTop2 + 'px';
             });
+        });
+
+        //大語言模型
+        let key = "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"
+
+        async function groqChat(q) {
+            const jsonResponse = await fetch("https://api.groq.com/openai/v1/chat/completions", {
+                body: JSON.stringify({
+                    "model": "llama3-8b-8192",
+                    "messages": [{"role": "user", "content": q}],
+                    "temperature": 0.7
+                }),
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${key}`,
+                }
+            });
+
+            const jsonData = await jsonResponse.json();
+            console.log(JSON.stringify(jsonData, null, 2));
+            return jsonData.choices[0].message.content;
+        }
+
+        async function chat() {
+            let qNode = document.querySelector('#question');
+            let chatBox = document.getElementById("chatBox");
+            let userMessage = qNode.value.trim();
+
+            if (userMessage === "") return;
+
+            // 用戶名稱
+            let userLabel = document.createElement("div");
+            userLabel.classList.add("user-label");
+            userLabel.innerText = "你";
+
+            // 用戶訊息
+            let userDiv = document.createElement("div");
+            userDiv.classList.add("message", "user-message", "p-2");
+            userDiv.innerHTML = userMessage.replace(/\n/g, "<br>");
+
+            let userContainer = document.createElement("div");
+            userContainer.classList.add("message-container");
+            userContainer.appendChild(userLabel);
+            userContainer.appendChild(userDiv);
+
+            chatBox.appendChild(userContainer);
+
+            // 清空輸入框
+            qNode.value = "";
+
+            // 機器人回覆 (先顯示等待)
+            let botLabel = document.createElement("div");
+            botLabel.classList.add("bot-label");
+            botLabel.innerText = "Groq";
+
+            let botDiv = document.createElement("div");
+            botDiv.classList.add("message", "bot-message", "p-2");
+            botDiv.innerHTML = "請稍等幾秒鐘 ...";
+
+            let botContainer = document.createElement("div");
+            botContainer.classList.add("message-container");
+            botContainer.appendChild(botLabel);
+            botContainer.appendChild(botDiv);
+
+            chatBox.appendChild(botContainer);
+
+            chatBox.scrollTop = chatBox.scrollHeight;
+
+            // 呼叫 API
+            let answer = await groqChat(userMessage);
+            botDiv.innerHTML = answer.replace(/\n/g, "<br>");
+
+            // 自動滾動到底部
+            chatBox.scrollTop = chatBox.scrollHeight;
+        }
+
+        // 支援 Shift+Enter 換行，Enter 送出
+        document.getElementById("question").addEventListener("keydown", function(event) {
+            if (event.key === "Enter") {
+                if (event.shiftKey) {
+                    event.preventDefault();
+                    let cursorPos = this.selectionStart;
+                    this.value = this.value.substring(0, cursorPos) + "\n" + this.value.substring(cursorPos);
+                    this.selectionStart = this.selectionEnd = cursorPos + 1;
+                } else {
+                    event.preventDefault();
+                    chat();
+                }
+            }
         });
     </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
