@@ -97,6 +97,7 @@
     .display p 
     {
         font-size: 20px;
+        line-height: 50px;
     }
 }
 
@@ -109,7 +110,8 @@
 
     .display p 
     {
-        font-size: 30px;
+        font-size: 25px;
+        line-height: 50px;
     }
 }
 
