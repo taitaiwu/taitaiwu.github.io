@@ -34,7 +34,10 @@
                     <a class="nav-link" id="profile-tab" data-bs-toggle="tab" href="#profile">我的作品</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" id="ai-tab" data-bs-toggle="tab" href="#ai">大語言模型</a>
+                    <a class="nav-link" id="ai-tab" data-bs-toggle="tab" href="#ai">簡易聊天</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="photo-tab" data-bs-toggle="tab" href="#photo">一些照片</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" id="contact-tab" data-bs-toggle="tab" href="#contact">聯絡方式</a>
@@ -61,7 +64,10 @@
                         <a class="nav-link" id="profile-tab" data-bs-toggle="tab" href="#profile">我的作品</a>
                     </li>
                     <li>
-                        <a class="nav-link" id="ai-tab" data-bs-target="tab" href="#ai">聊天機器人</a>
+                        <a class="nav-link" id="ai-tab" data-bs-toggle="tab" href="#ai">簡易聊天</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="photo-tab" data-bs-toggle="tab" href="#photo">一些照片</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" id="contact-tab" data-bs-toggle="tab" href="#contact">聯絡方式</a>
@@ -90,7 +96,7 @@
 
         <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
             <h2>課堂作品</h2>
-            <div class="row gy-4" style="height: 40vh;">
+            <div class="row gy-4">
                 <div class="display display1">
                     <div>
                         <img src="picture/112-2網頁設計.png" alt="112-2網頁設計" loading="lazy">
@@ -118,7 +124,7 @@
 
         <div class="tab-pane fade" id="ai" role="tabpanel" aria-labelledby="ai-tab">
             <h2>一個不太聰明的聊天機器人</h2>
-            <p>可接受各種語言，輸出可能會以繁體中文、簡體中文或英文等語言回答</p>
+            <p>目前只有簡易的聊天功能(應該無法記憶)，可接受各種語言，輸出可能會以繁體中文、簡體中文或英文等語言回答</p>
             <div class="mb-3">
                 <div class="chat-box" id="chatBox"></div>
                 <div class="mt-3">
@@ -137,7 +143,11 @@
             </div>
         </div>
 
-        <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab" style="height: 60vh;">
+        <div class="tab-pane fade" id="photo" role="tabpanel" aria-labelledby="photo-tab">
+            <h2>頁面建置中...</h2>
+        </div>
+
+        <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
             <h2>聯絡方式</h2>
             <p>你可以透過以下方式聯絡我或了解我：</p>
             <div class="display display2">
@@ -190,7 +200,7 @@
         <div class="container">
             <p>
                 © 2025 Jiatai Wu's personal website. <br>
-                Designed in Html, CSS, JavaScript, and Bootstrap5; built on Github.
+                Designed in Html, CSS, JavaScript, and Bootstrap5; built on GitHub.
             </p>
         </div>
     </footer>
