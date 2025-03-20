@@ -1,0 +1,397 @@
+@import url('https://fonts.googleapis.com/css2?family=LXGW+WenKai+TC&display=swap');
+
+/* 載入畫面 */
+.loading-screen 
+{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgb(243, 255, 247); 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999; /* 確保在最上層 */
+    transition: opacity 0.5s ease-out, visibility 0.5s ease-out;
+}
+
+.loading-screen.hidden 
+{
+    opacity: 0;
+    visibility: hidden;
+}
+
+.spinner 
+{
+    margin: 100px auto;
+    width: 40px;
+    height: 40px;
+    position: relative;
+}
+
+.cube1, .cube2 
+{
+    background-color: #333;
+    width: 15px;
+    height: 15px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    
+    -webkit-animation: sk-cubemove 1.8s infinite ease-in-out;
+    animation: sk-cubemove 1.8s infinite ease-in-out;
+}
+
+.cube2 
+{
+    -webkit-animation-delay: -0.9s;
+    animation-delay: -0.9s;
+}
+
+@-webkit-keyframes sk-cubemove 
+{
+    25% { -webkit-transform: translateX(42px) rotate(-90deg) scale(0.5) }
+    50% { -webkit-transform: translateX(42px) translateY(42px) rotate(-180deg) }
+    75% { -webkit-transform: translateX(0px) translateY(42px) rotate(-270deg) scale(0.5) }
+    100% { -webkit-transform: rotate(-360deg) }
+}
+
+@keyframes sk-cubemove 
+{
+    25% 
+    { 
+        transform: translateX(42px) rotate(-90deg) scale(0.5);
+        -webkit-transform: translateX(42px) rotate(-90deg) scale(0.5);
+    } 
+    50% 
+    { 
+        transform: translateX(42px) translateY(42px) rotate(-179deg);
+        -webkit-transform: translateX(42px) translateY(42px) rotate(-179deg);
+    } 
+    50.1% 
+    { 
+        transform: translateX(42px) translateY(42px) rotate(-180deg);
+        -webkit-transform: translateX(42px) translateY(42px) rotate(-180deg);
+    } 
+    75% 
+    { 
+        transform: translateX(0px) translateY(42px) rotate(-270deg) scale(0.5);
+        -webkit-transform: translateX(0px) translateY(42px) rotate(-270deg) scale(0.5);
+    } 
+    100% 
+    { 
+        transform: rotate(-360deg);
+        -webkit-transform: rotate(-360deg);
+    }
+}
+
+/* 小螢幕微調項目 */
+@media (max-width: 768px) 
+{
+    .display h1
+    {
+        font-size: 40px;
+    }   
+
+    .display p 
+    {
+        font-size: 20px;
+    }
+}
+
+@media (min-width: 769px)
+{
+    .display h1
+    {
+        font-size: 60px;
+    }   
+
+    .display p 
+    {
+        font-size: 30px;
+    }
+}
+
+/* 主體架構 */
+html, body 
+{
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    font-family: "LXGW WenKai TC", cursive;
+    line-height: 30px;
+    justify-items: center;
+}
+
+/* 標題列 */
+header 
+{
+    min-height: 10vh;
+}
+
+header div h1
+{
+    font-size: 70px !important;
+}
+
+/* 導覽列 */
+.nav 
+{
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.nav-tabs 
+{
+    height: 6vh;
+    font-size: 20px;
+    align-items: center;
+}
+
+.nav-tabs .nav-link 
+{
+    color: white !important;
+    background-color: transparent;
+}
+
+.nav-tabs .nav-link.active 
+{
+    background-color: white !important; 
+    color: black !important;
+}
+
+.tab-content 
+{
+    flex-grow: 1;
+    overflow-y: auto;
+}
+
+/* 超連結樣式 */
+a:link
+{
+    color: black;
+    text-decoration: none;
+}
+
+a:visited
+{
+    color: darkgray;
+    text-decoration: none;
+}
+
+a:hover
+{
+    color: darkkhaki;
+    text-decoration: none;
+}
+
+/* 我的作品及聯絡方式的方塊 */
+.display 
+{
+    position: flex;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-content: space-around;
+}
+
+.display1  /* 我的作品 */
+{
+    top: 340px;
+    left: 10px;
+    transition: top 0.3s ease; 
+}
+
+.display2  /* 聯絡方式 */
+{
+    top: 420px;
+    left: 100px;
+    transition: top 0.3s ease; 
+}
+
+.content-card
+{
+    display: flex;
+    justify-content: center;    
+    align-items: center;
+}
+
+.display1 img 
+{
+    position: absolute;
+    width: 480px;
+    height: 270px;
+    background-size: cover;
+    border-radius: 15px;
+    opacity: 1;
+    transition: opacity 0.8s 1.1s;
+    z-index: 1;
+}
+
+.display2 img 
+{
+    position: absolute;
+    width: 170px;
+    height: 170px;
+    background-size: cover;
+    border-radius: 15px;
+    opacity: 1;
+    transition: opacity 0.8s 1.1s;
+    z-index: 1;
+}
+
+.display h1 
+{
+    position: absolute;
+    top: 20%;
+    opacity: 0;
+    transition: opacity 0.8s 0.8s;
+    text-align: center;
+    width: 100%;
+    margin: 0;
+    z-index: 2;
+}
+
+.display p 
+{
+    position: absolute;
+    top: 50%;
+    opacity: 0;
+    transition: opacity 0.8s 0.8s;
+    text-align: center;
+    width: 100%;
+    margin: 0;
+    z-index: 2;
+}
+
+.display > div:hover img 
+{
+    opacity: 0; /* 滑鼠懸停時隱藏圖片 */
+    transition: opacity 0.8s;
+}
+
+.display > div:hover h1, .display > div:hover p 
+{
+    opacity: 1; /* 滑鼠懸停時顯示文字 */
+    transition: opacity 0.8s 1.5s;
+}
+
+.display > div 
+{
+    position: relative;
+    background-color: white;
+    box-shadow: 0px 0px 9px gray;
+    border-radius: 15px;
+    margin: 20px;
+    cursor: pointer;
+    overflow: hidden;
+    transition: background-color 0.5s 1s, border-radius 0.5s 0.1s, width 1s 0.1s, height 1s 0.1s;
+}
+
+.display1 > div
+{
+    width: 480px;
+    height: 270px;
+}
+
+.display2 > div
+{
+    width: 270px;
+    height: 180px;
+}
+
+.display > div:hover 
+{
+    transition: background-color 0.5s 1s, border-radius 0.5s 0.8s, width 1s 0.8s, height 1s 0.8s;
+    background-color: aliceblue;
+    border-radius: 0;
+}
+
+.display1 > div:hover
+{
+    width: 670px;
+    height: 380px;
+}
+
+.display2 > div:hover
+{
+    width: 360px;
+    height: 240px;
+}
+
+.display a 
+{
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: block;
+    width: 100%;
+    height: 100%;
+    z-index: 3;
+}
+
+/* 大語言模型介面 */
+.chat-box 
+{
+    height: 400px;
+    overflow-y: auto;
+    padding: 10px;
+    border: 2px solid #ccc; 
+    border-radius: 5px;
+    background: #f8f9fa;
+    display: flex;
+    flex-direction: column;
+}
+
+.message-container 
+{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10px;
+}
+
+.message 
+{
+    padding: 10px;
+    border-radius: 10px;
+    max-width: 80%;
+    word-wrap: break-word;
+}
+
+.user-message 
+{
+    background-color: #0d6efd;
+    color: white;
+    align-self: flex-end;
+}
+
+.bot-message 
+{
+    background-color: #e9ecef;
+    color: black;
+    align-self: flex-start;
+}
+
+.user-label 
+{
+    align-self: flex-end;
+    font-size: 0.9em;
+    color: #555;
+    margin-bottom: 2px;
+}
+
+.bot-label 
+{
+    align-self: flex-start;
+    font-size: 0.9em;
+    color: #555;
+    margin-bottom: 2px;
+}
+
+/* 頁尾版權 */
+footer 
+{
+    min-height: 10vh;
+}
