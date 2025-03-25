@@ -392,6 +392,21 @@ a:hover
     margin-bottom: 2px;
 }
 
+/* 一些照片 */
+.accordion-body
+{
+    text-align: center;
+}
+
+img
+{
+    max-width: 100%;
+    border:2px solid #ccc;
+	padding:8px;
+    box-shadow: 3px 3px 4px #ccc;
+    margin: 3px;
+}
+
 /* 頁尾版權 */
 footer 
 {
