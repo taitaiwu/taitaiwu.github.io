@@ -230,6 +230,8 @@ a:hover
     opacity: 1;
     transition: opacity 0.8s 1.1s;
     z-index: 1;
+    border:0px;
+    box-shadow: 0px;
 }
 
 .display2 img 
@@ -242,6 +244,8 @@ a:hover
     opacity: 1;
     transition: opacity 0.8s 1.1s;
     z-index: 1;
+    border:0px;
+    box-shadow: 0px;
 }
 
 .display h1 
