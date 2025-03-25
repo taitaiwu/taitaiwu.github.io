@@ -398,7 +398,7 @@ a:hover
     text-align: center;
 }
 
-img
+.accordion-body img
 {
     max-width: 100%;
     border:2px solid #ccc;
