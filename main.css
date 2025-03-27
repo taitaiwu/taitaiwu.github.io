@@ -260,6 +260,11 @@ a:hover
     z-index: 2;
 }
 
+#microsoft
+{
+    font-size: 50px;
+}
+
 .display p 
 {
     position: absolute;
