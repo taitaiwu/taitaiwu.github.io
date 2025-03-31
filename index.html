@@ -42,6 +42,9 @@
                 <li class="nav-item">
                     <a class="nav-link" id="contact-tab" data-bs-toggle="tab" href="#contact">聯絡方式</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="link-tab" data-bs-toggle="tab" href="#link">友站連結</a>
+                </li>
             </ul>
         </div>
     </div>
@@ -71,6 +74,9 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" id="contact-tab" data-bs-toggle="tab" href="#contact">聯絡方式</a>
+                    </li>
+                    <li>
+                        <a class="nav-link" id="link-tab" data-bs-target="tab" href="#link">友站連結</a>
                     </li>
                 </ul>
             </div>
@@ -104,7 +110,7 @@
         </div>
 
         <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-            <h2>課堂作品</h2>
+            <h2><strong>課堂作品</strong></h2>
             <div class="row gy-4">
                 <div class="display display1">
                     <div>
@@ -143,7 +149,7 @@
         </div>
 
         <div class="tab-pane fade" id="ai" role="tabpanel" aria-labelledby="ai-tab">
-            <h2>一個不太聰明的聊天機器人</h2>
+            <h2><strong>一個不太聰明的聊天機器人</strong></h2>
             <p>目前只有簡易的聊天功能(應該無法記憶)，可接受各種語言，輸出可能會以繁體中文、簡體中文或英文等語言回答</p>
             <div class="mb-3">
                 <div class="chat-box" id="chatBox"></div>
@@ -164,7 +170,7 @@
         </div>
 
         <div class="tab-pane fade" id="photo" role="tabpanel" aria-labelledby="photo-tab">
-            <h2>一些走過的地方...</h2>
+            <h2><strong>一些走過的地方...</strong></h2>
             <br>
             <div class="accordion" id="accordionExample">
                 <div class="accordion-item">
@@ -252,7 +258,7 @@
         </div>
 
         <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
-            <h2>聯絡方式</h2>
+            <h2><strong>聯絡方式</strong></h2>
             <p>你可以透過以下方式聯絡我或了解我：</p>
             <div class="display display2">
                 <div class="content-card">
@@ -305,12 +311,19 @@
                 </div>
             </div>
         </div>
+
+        <div class="tab-pane fade" id="link" role="tabpanel" aria-readonly="link-tab">
+            <h2><strong>一些酷東西</strong></h2>
+            <ul>
+                <li><a href="https://sturl.cc/">燕子的網址縮短工具</a></li>
+            </ul>
+        </div>
     </div>
 
     <footer class="bg-dark text-white text-center py-3">
         <div class="container">
             <p>
-                © 2025 Jiatai Wu's personal website. <br>
+                © 2025 Jiatai Wu<br>
                 Designed in Html, CSS, JavaScript, and Bootstrap5; built on GitHub.
             </p>
         </div>
